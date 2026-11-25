@@ -1,0 +1,34 @@
+{
+  "name": "office-hours-queue",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A fair office hours queue for in-person and online students: live position, wait estimates, push notifications when it's your turn, and anonymous statistics.",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "test": "node --test \"test/*.test.ts\"",
+    "typecheck": "tsc -p tsconfig.json && tsc -p web/tsconfig.json",
+    "build": "vite build --config web/vite.config.ts",
+    "dev:web": "vite --config web/vite.config.ts",
+    "local": "node scripts/dev.ts",
+    "demo": "node scripts/demo.ts",
+    "secrets": "node scripts/secrets.ts",
+    "cf:db:create": "wrangler d1 create office-hours-queue",
+    "cf:db:migrate": "wrangler d1 migrations apply office-hours-queue --remote",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.1.0",
+    "wrangler": "^4.40.0"
+  }
+}
